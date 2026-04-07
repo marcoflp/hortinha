@@ -1,31 +1,69 @@
 import React from 'react'
+import { Leaf, Globe, Heart } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-green-900 text-green-100 py-10 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <div className="flex items-center gap-2 font-bold text-white text-lg mb-1">
-            <span>🌱</span> Semeando Saúde
+    <footer className="bg-spotify-black text-spotify-silver py-20 px-6 border-t border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 font-black text-white text-2xl mb-4 tracking-tighter uppercase">
+            <Leaf className="text-spotify-green w-8 h-8" />
+            Semeando <span className="text-spotify-green"> Saúde</span>
           </div>
-          <p className="text-green-300 text-sm">IFSul Campus Passo Fundo · Educação Pública 100% Gratuita</p>
-          <p className="text-green-400 text-xs mt-1">Frederico · Marco · Murilo · Victor</p>
+          <p className="text-spotify-silver text-[11px] font-black mb-4 uppercase tracking-[2px]">IFSul Passo Fundo · Campus Digital</p>
+          <p className="text-spotify-muted text-sm font-bold leading-relaxed max-w-sm">
+            Educação Pública, Gratuita e de Qualidade. <br />
+            Projeto de Extensão em Agroecologia Urbana e Tecnologia Sustentável.
+          </p>
+          <div className="flex gap-6 mt-8">
+            <Globe className="w-5 h-5 opacity-50 hover:opacity-100 hover:text-spotify-green transition-all cursor-pointer" />
+            <Heart className="w-5 h-5 opacity-50 hover:opacity-100 hover:text-spotify-green transition-all cursor-pointer" />
+          </div>
         </div>
 
-        <div className="text-center text-sm text-green-400">
-          <p>Cultivando saúde, sustentabilidade e tecnologia 💚</p>
-          <p className="mt-1">© {new Date().getFullYear()} · Todos os direitos reservados</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 flex-[2]">
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Equipe Projeto</h4>
+            <ul className="space-y-4 text-sm font-bold">
+              {['Frederico', 'Marco', 'Murilo', 'Victor'].map(n => (
+                <li key={n} className="hover:text-spotify-green cursor-default transition-colors">{n}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Navegação</h4>
+            <ul className="space-y-4 text-sm font-bold">
+              {['Sobre', 'Cultivos', 'Receitas', 'Dicas'].map(item => (
+                <li key={item}>
+                  <a href={`/#${item.toLowerCase()}`} className="hover:text-white transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Institucional</h4>
+            <ul className="space-y-4 text-sm font-bold">
+              <li className="hover:text-white cursor-pointer">Portal IFSul</li>
+              <li className="hover:text-white cursor-pointer">Editais Extensão</li>
+              <li className="hover:text-white cursor-pointer">Contato</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <div className="flex gap-4 text-sm">
-          {['Sobre', 'Cultivos', 'Receitas', 'Dicas'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`}
-              className="text-green-300 hover:text-white transition-colors">
-              {item}
-            </a>
-          ))}
+      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex gap-6 text-[10px] font-black uppercase tracking-[2px] text-spotify-muted">
+          <span className="hover:text-white cursor-pointer transition-colors">Privacidade</span>
+          <span className="hover:text-white cursor-pointer transition-colors">Termos</span>
+        </div>
+        <div className="text-[10px] font-black text-spotify-muted uppercase tracking-[2px] flex items-center gap-2">
+          © {new Date().getFullYear()} PROJETO SEMEANDO SAÚDE · FEITO COM <Heart className="w-3 h-3 text-spotify-green fill-spotify-green" /> PELOS ACADÊMICOS
         </div>
       </div>
     </footer>
   )
 }
+
+

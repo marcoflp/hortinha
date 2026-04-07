@@ -1,80 +1,99 @@
 import React, { useState } from 'react'
+import { MessageSquareText, Smartphone } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
-// Cultivos reais plantados no projeto Semeando Saúde
+// Importando as imagens reais da horta
+import imgAlface from '../img/1.jpg'
+import imgHortalicas from '../img/2.jpg'
+import imgTomate from '../img/3.jpg'
+import imgBeterraba from '../img/5.jpg'
+import imgManjericao from '../img/6.jpg'
+import imgHortaVertical from '../img/8.jpg'
+
 const cultivos = [
-  { nome: 'Alface', categoria: 'Folhosas', emoji: '🥬', status: 'Colhida', dias: 0, desc: 'Plantada em 07/Out. Cultivada nos litrões da horta vertical do campus.' },
-  { nome: 'Hortaliças Diversas', categoria: 'Folhosas', emoji: '🌿', status: 'Colhida', dias: 0, desc: 'Plantio inicial realizado em 30/Set com variedades diversas de hortaliças.' },
-  { nome: 'Tomate', categoria: 'Frutas', emoji: '🍅', status: 'Crescendo', dias: 60, desc: 'Plantado em 21/Out em baldes pintados. Estrutura de suporte finalizada em 11/Nov.' },
-  { nome: 'Beterraba', categoria: 'Raízes', emoji: '🫚', status: 'Crescendo', dias: 45, desc: 'Plantada neste semestre. Rica em ferro e antioxidantes, ótima para sucos e saladas.' },
-  { nome: 'Manjericão', categoria: 'Temperos', emoji: '🌱', status: 'Ativa', dias: 0, desc: 'Cultivado para uso em receitas como pesto e pizza. Aromático e versátil.' },
-  { nome: 'Horta Vertical (Litrões)', categoria: 'Estrutura', emoji: '🪴', status: 'Ativa', dias: 0, desc: 'Estrutura criada com garrafas PET reutilizadas. Resultados coletados em 18/Nov.' },
+  { nome: 'Alface', categoria: 'Folhosas', imagem: imgAlface, status: 'Colhida', desc: 'Plantada em 07/Out. Cultivada nos litrões da horta vertical do campus.' },
+  { nome: 'Hortaliças', categoria: 'Folhosas', imagem: imgHortalicas, status: 'Colhida', desc: 'Plantio inicial realizado em 30/Set com variedades diversas.' },
+  { nome: 'Tomate Grape', categoria: 'Frutas', imagem: imgTomate, status: 'Colhida', desc: 'Plantado em 21/Out em baldes. Suporte finalizado em 11/Nov.' },
+  { nome: 'Beterraba', categoria: 'Raízes', imagem: imgBeterraba, status: 'Crescendo', desc: 'Plantada neste semestre. Rica em ferro e antioxidantes.' },
+  { nome: 'Manjericão', categoria: 'Temperos', imagem: imgManjericao, status: 'Ativa', desc: 'Cultivado para uso em receitas. Aromático e versátil.' },
+  { nome: 'Horta Vertical', categoria: 'Estrutura', imagem: imgHortaVertical, status: 'Ativa', desc: 'Estrutura criada com garrafas PET reutilizadas (Litrões).' },
 ]
 
 const categorias = ['Todos', 'Folhosas', 'Frutas', 'Raízes', 'Temperos', 'Estrutura']
 
-const statusColor = {
-  'Colhida':   'bg-green-100 text-green-700',
-  'Crescendo': 'bg-yellow-100 text-yellow-700',
-  'Ativa':     'bg-blue-100 text-blue-700',
-  'Planejado': 'bg-gray-100 text-gray-500',
-}
-
 export default function Catalogo() {
   const [filtro, setFiltro] = useState('Todos')
-
   const filtrados = filtro === 'Todos' ? cultivos : cultivos.filter(c => c.categoria === filtro)
 
   return (
-    <section id="catalogo" className="py-20 bg-white px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="text-green-600 font-semibold text-sm uppercase tracking-widest">Catálogo</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2">O que cultivamos</h2>
-          <p className="text-gray-500 mt-3">Cultivos reais do primeiro ciclo do projeto Semeando Saúde.</p>
+    <section id="catalogo" className="py-24 bg-spotify-black px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <span className="section-label">02 / Nosso Acervo</span>
+          <h2 className="section-title">O que cultivamos</h2>
+          <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-widest text-[11px] mt-2">Cultivos reais capturados pela nossa equipe no IFSul.</p>
         </div>
 
-        {/* Filtros por categoria */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
+        {/* Filtros por categoria (Spotify style pills) */}
+        <div className="flex flex-wrap gap-3 mb-12">
           {categorias.map(cat => (
             <button key={cat} onClick={() => setFiltro(cat)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors
-                ${filtro === cat ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-green-50'}`}>
+              className={`px-4 py-1.5 rounded-pill font-bold transition-all duration-200
+                ${filtro === cat ? 'bg-white text-black text-xs' : 'bg-spotify-mid text-white hover:bg-spotify-card text-xs'}`}>
               {cat}
             </button>
           ))}
         </div>
 
-        {/* Grid de cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Grid de cards (Spotify playlist style) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtrados.map(c => (
-            <div key={c.nome} className="border border-gray-100 rounded-2xl p-5 hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-3">{c.emoji}</div>
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="font-bold text-gray-800">{c.nome}</h3>
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${statusColor[c.status]}`}>
+            <div key={c.nome} className="bg-spotify-surface rounded-xl p-5 hover:bg-spotify-card transition-all duration-300 group cursor-default shadow-med flex flex-col h-full ring-1 ring-white/5 overflow-hidden">
+              <div className="relative aspect-[16/10] mb-6 rounded-lg overflow-hidden shadow-heavy">
+                 <img 
+                    src={c.imagem} 
+                    alt={c.nome} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-spotify-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <h3 className="font-bold text-white mb-2 tracking-tight text-xl">{c.nome}</h3>
+              <p className="text-spotify-silver text-[13px] line-clamp-2 font-bold leading-relaxed mb-6 flex-grow">{c.desc}</p>
+              <div className="flex justify-between items-center mt-auto">
+                <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-sm
+                  ${c.status === 'Colhida' ? 'bg-spotify-green/20 text-spotify-green' : 'bg-spotify-warning/20 text-spotify-warning'}`}>
                   {c.status}
                 </span>
+                <span className="text-[10px] font-bold text-spotify-muted uppercase tracking-[2px]">{c.categoria}</span>
               </div>
-              <p className="text-gray-500 text-xs mb-3">{c.desc}</p>
-              {c.dias > 0 && (
-                <p className="text-xs text-green-600 font-medium">⏱ {c.dias} dias estimados</p>
-              )}
             </div>
           ))}
         </div>
 
-        {/* Destaque do App */}
-        <div className="mt-12 bg-green-50 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
-          <div className="text-5xl">📱</div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-800 mb-1">Aplicativo com Chatbot de IA</h3>
-            <p className="text-gray-500 text-sm">
-              Um dos resultados do projeto é o protótipo de aplicativo com chatbot inteligente para
-              consultas sobre cultivo, desenvolvido paralelamente às atividades da horta.
+        {/* Destaque do App (Spotify Card style) */}
+        <div className="mt-20 bg-gradient-to-r from-spotify-surface to-spotify-mid rounded-2xl p-10 flex flex-col md:flex-row items-center gap-10 border border-white/10 shadow-heavy overflow-hidden relative">
+          {/* Abstract decoration */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-spotify-green/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+          
+          <div className="w-24 h-24 md:w-32 md:h-32 bg-spotify-black rounded-3xl flex items-center justify-center shadow-heavy shrink-0 border border-white/5 relative z-10">
+            <Smartphone className="w-12 h-12 md:w-16 md:h-16 text-spotify-green" />
+          </div>
+          <div className="text-center md:text-left flex-grow relative z-10">
+            <h3 className="text-2xl md:text-4xl font-black text-white mb-4 tracking-tighter uppercase">AI Assistente Semeando Saúde</h3>
+            <p className="text-spotify-silver text-lg font-bold max-w-2xl leading-relaxed mb-8">
+              Dúvidas sobre o plantio destas espécies? Nossa inteligência artificial 
+              está pronta para orientar seu cultivo acadêmico.
             </p>
+            <Link to="/chat" className="btn-spotify-green flex items-center gap-2 w-fit mx-auto md:mx-0 shadow-heavy">
+               <MessageSquareText className="w-5 h-5" />
+               ABRIR CHATBOT IA
+            </Link>
           </div>
         </div>
       </div>
     </section>
   )
 }
+
+
+

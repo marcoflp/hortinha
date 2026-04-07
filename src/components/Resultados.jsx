@@ -1,63 +1,60 @@
 import React from 'react'
+import { Microscope, Users, Smartphone, Calendar, CheckCircle2 } from 'lucide-react'
 
 const resultados = [
-  {
-    icon: '🌱',
-    titulo: 'Horta Acadêmica Implantada',
-    desc: 'Espaço de aprendizagem prática no campus com horta vertical em litrões e canteiros de tomates.',
-  },
-  {
-    icon: '👩‍🏫',
-    titulo: 'Oficinas Realizadas',
-    desc: 'Momentos de socialização e capacitação sobre sustentabilidade, agroecologia e nutrição para a comunidade.',
-  },
-  {
-    icon: '📱',
-    titulo: 'Protótipo de App com IA',
-    desc: 'Desenvolvimento de um aplicativo com chatbot de inteligência artificial para consultas sobre cultivo.',
-  },
+  { icon: Microscope, titulo: 'Horta Implantada', desc: 'Espaço de aprendizagem prática no campus com horta vertical e canteiros otimizados.' },
+  { icon: Users, titulo: 'Oficinas Ativas', desc: 'Capacitação sobre sustentabilidade e agroecologia para toda a comunidade acadêmica.' },
+  { icon: Smartphone, titulo: 'Inovação Digital', desc: 'Desenvolvimento de assistente inteligente para suporte ao cultivo sustentável.' },
 ]
 
 const proximosCiclo = [
-  { periodo: 'Fev/2026', acao: 'Replanejamento e seleção de novas espécies' },
-  { periodo: 'Mar/2026', acao: 'Preparação do terreno e replantio' },
-  { periodo: 'Abr–Mai/2026', acao: 'Acompanhamento e manutenção contínua' },
-  { periodo: 'Jun/2026', acao: 'Coleta de dados e finalização do aplicativo' },
-  { periodo: 'Jul/2026', acao: 'Relatório final e avaliação do projeto' },
+  { periodo: 'Fev/2026', acao: 'Replanejamento e novas espécies' },
+  { periodo: 'Mar/2026', acao: 'Preparação e replantio' },
+  { periodo: 'Abr–Mai/26', acao: 'Manutenção contínua' },
+  { periodo: 'Jun/2026', acao: 'Finalização do aplicativo' },
 ]
 
 export default function Resultados() {
   return (
-    <section id="resultados" className="py-20 bg-white px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="text-green-600 font-semibold text-sm uppercase tracking-widest">Primeiro Ciclo</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Resultados Alcançados</h2>
+    <section id="resultados" className="py-24 bg-spotify-black px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <span className="section-label">05 / Impacto</span>
+          <h2 className="section-title">Resultados Alcançados</h2>
         </div>
 
         {/* Cards de resultados */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {resultados.map(r => (
-            <div key={r.titulo} className="bg-green-50 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
-              <div className="text-5xl mb-4">{r.icon}</div>
-              <h3 className="font-bold text-gray-800 mb-2">{r.titulo}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{r.desc}</p>
+            <div key={r.titulo} className="bg-spotify-surface rounded-lg p-10 text-center hover:bg-spotify-card transition-all duration-300 shadow-med group ring-1 ring-white/5">
+              <div className="w-20 h-20 bg-spotify-mid rounded-full flex items-center justify-center mb-8 mx-auto group-hover:bg-spotify-green transition-colors duration-300 shadow-heavy">
+                <r.icon className="w-10 h-10 text-spotify-green group-hover:text-black transition-colors" />
+              </div>
+              <h3 className="font-black text-white mb-4 text-xl tracking-tight uppercase">{r.titulo}</h3>
+              <p className="text-spotify-silver text-sm leading-relaxed font-bold">{r.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Próximo ciclo */}
-        <div className="bg-gray-50 rounded-2xl p-8">
-          <h3 className="text-lg font-bold text-gray-800 mb-6 text-center">
-            🔭 O que esperamos do Segundo Ciclo (2026)
-          </h3>
-          <div className="space-y-3 max-w-xl mx-auto">
+        {/* Próximo ciclo (Spotify style card) */}
+        <div className="bg-spotify-mid rounded-xl p-10 border border-white/10 shadow-heavy max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 justify-center mb-10">
+             <Calendar className="w-6 h-6 text-spotify-green" />
+             <h3 className="text-xl font-black text-white tracking-tighter uppercase">
+               Planejamento Segundo Ciclo (2026)
+             </h3>
+          </div>
+          <div className="space-y-6">
             {proximosCiclo.map((item, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shrink-0 min-w-[90px] text-center">
+              <div key={i} className="flex items-center gap-6 group">
+                <span className="bg-spotify-green text-black text-[10px] font-black px-4 py-2 rounded-sm shrink-0 min-w-[110px] text-center uppercase tracking-widest shadow-[0_0_15px_rgba(30,215,96,0.3)]">
                   {item.periodo}
                 </span>
-                <p className="text-gray-600 text-sm">{item.acao}</p>
+                <div className="h-px bg-white/10 flex-grow group-hover:bg-spotify-green/30 transition-colors"></div>
+                <div className="flex items-center gap-3">
+                   <CheckCircle2 className="w-4 h-4 text-spotify-muted group-hover:text-spotify-green transition-colors" />
+                   <p className="text-white text-sm font-black tracking-tight uppercase opacity-80 group-hover:opacity-100">{item.acao}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -66,3 +63,5 @@ export default function Resultados() {
     </section>
   )
 }
+
+

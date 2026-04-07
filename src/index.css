@@ -3,4 +3,11 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; }
+body { @apply bg-spotify-black text-white font-sans; -webkit-font-smoothing: antialiased; }
+
+@layer components {
+  .section-label { @apply text-[10px] font-semibold uppercase tracking-spotify text-spotify-silver mb-2; }
+  .section-title { @apply text-2xl font-bold mb-8; }
+  .btn-spotify-green { @apply bg-spotify-green text-black px-8 py-3 rounded-pill text-sm font-bold uppercase tracking-spotify hover:scale-105 transition-transform; }
+  .btn-spotify-outline { @apply border border-spotify-muted text-white px-8 py-3 rounded-pill text-sm font-bold uppercase tracking-spotify hover:border-white transition-colors; }
+}

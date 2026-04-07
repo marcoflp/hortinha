@@ -1,112 +1,48 @@
 import React from 'react'
 
-// Atividades reais conforme relatório final do projeto
 const etapas = [
-  {
-    data: '23 Set 2025',
-    titulo: 'Início do Projeto',
-    desc: 'Planejamento, confecção dos litrões, montagem das estruturas e estudo preliminar de agroecologia urbana.',
-    status: 'done',
-  },
-  {
-    data: '30 Set 2025',
-    titulo: 'Definição e Plantio Inicial',
-    desc: 'Definição da oficina e da estrutura do aplicativo. Plantio inicial das hortaliças.',
-    status: 'done',
-  },
-  {
-    data: '07 Out 2025',
-    titulo: 'Oficina e Plantio de Alfaces',
-    desc: 'Realização de oficina com a comunidade, plantio de alfaces e início do desenvolvimento do aplicativo.',
-    status: 'done',
-  },
-  {
-    data: '14 Out 2025',
-    titulo: 'Semana Acadêmica',
-    desc: 'Participação e apresentação do projeto na Semana Acadêmica do IFSul Campus Passo Fundo.',
-    status: 'done',
-  },
-  {
-    data: '21 Out 2025',
-    titulo: 'Plantio de Tomates',
-    desc: 'Pintura dos baldes para plantio de tomates, plantio realizado e manutenção semanal da horta.',
-    status: 'done',
-  },
-  {
-    data: '28 Out 2025',
-    titulo: 'Estrutura dos Tomates',
-    desc: 'Fixação do poste de suporte para os tomateiros e manutenção semanal.',
-    status: 'done',
-  },
-  {
-    data: '04 Nov 2025',
-    titulo: 'Construção das Estruturas',
-    desc: 'Início da criação da estrutura de suporte para os tomates e continuidade do desenvolvimento do app.',
-    status: 'done',
-  },
-  {
-    data: '11 Nov 2025',
-    titulo: 'Finalização das Estruturas',
-    desc: 'Finalização das estruturas dos tomateiros e manutenção semanal da horta.',
-    status: 'done',
-  },
-  {
-    data: '18 Nov 2025',
-    titulo: 'Coleta de Resultados',
-    desc: 'Coleta de resultados da horta vertical, manutenção semanal e registros finais do primeiro ciclo.',
-    status: 'done',
-  },
-  {
-    data: 'Fev/2026',
-    titulo: 'Segundo Ciclo — Replanejamento',
-    desc: 'Replanejamento, seleção de novas espécies e aquisição de insumos para o novo ciclo.',
-    status: 'done',
-  },
-  {
-    data: 'Mar/2026',
-    titulo: 'Replantio',
-    desc: 'Preparação física do terreno e execução do replantio com novas espécies selecionadas.',
-    status: 'done',
-  },
-  {
-    data: 'Jun/2026',
-    titulo: 'Finalização do App',
-    desc: 'Coleta de dados finais, análise estatística e finalização do aplicativo com chatbot de IA.',
-    status: 'upcoming',
-  },
+  { data: 'Set 2025', titulo: 'Início do Projeto', desc: 'Planejamento e confecção dos litrões.', status: 'done' },
+  { data: 'Out 2025', titulo: 'Plantio e Oficinas', desc: 'Plantio de alfaces e início do desenvolvimento do app.', status: 'done' },
+  { data: 'Nov 2025', titulo: 'Estruturas Finais', desc: 'Finalização dos suportes dos tomateiros.', status: 'done' },
+  { data: 'Fev 2026', titulo: 'Segundo Ciclo', desc: 'Replanejamento e novas espécies.', status: 'done' },
+  { data: 'Jun 2026', titulo: 'Finalização do App', desc: 'Análise final e chatbot de IA concluído.', status: 'upcoming' },
 ]
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-20 bg-gray-50 px-4">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="text-green-600 font-semibold text-sm uppercase tracking-widest">Histórico</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Nossa Jornada</h2>
-          <p className="text-gray-500 mt-3">Do planejamento à colheita — tudo que foi feito e o que vem por aí.</p>
+    <section id="timeline" className="py-24 bg-spotify-black px-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-14">
+          <span className="section-label">07 / Nossa Jornada</span>
+          <h2 className="section-title">Histórico do Projeto</h2>
+          <p className="text-spotify-silver max-w-2xl font-medium">Do planejamento à colheita — tudo que foi feito e o que vem por aí.</p>
         </div>
 
-        {/* Linha do tempo vertical */}
-        <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-green-200" />
+        {/* Linha do tempo vertical (Spotify style) */}
+        <div className="relative pl-12">
+          {/* Vertical line with gradient */}
+          <div className="absolute left-[23px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-spotify-green via-spotify-mid to-spotify-surface opacity-30" />
 
-          <div className="space-y-6">
+          <div className="space-y-10">
             {etapas.map((e, i) => (
-              <div key={i} className="flex gap-6 relative">
-                {/* Marcador */}
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 z-10 text-sm font-bold
-                  ${e.status === 'done' ? 'bg-green-600 text-white' :
-                    e.status === 'current' ? 'bg-green-400 text-white ring-4 ring-green-100' :
-                    'bg-white border-2 border-green-200 text-green-300'}`}>
-                  {e.status === 'done' ? '✓' : e.status === 'current' ? '●' : '○'}
+              <div key={i} className="relative group">
+                {/* Dot */}
+                <div className={`absolute -left-12 mt-1 w-6 h-6 rounded-full border-2 z-10 transition-all duration-300
+                  ${e.status === 'done' ? 'bg-spotify-green border-spotify-green shadow-[0_0_12px_#1ed760]' : 'bg-spotify-black border-spotify-mid shadow-none'}`}>
+                  {e.status === 'done' && <div className="text-[10px] text-black font-black flex items-center justify-center h-full">✓</div>}
                 </div>
 
-                {/* Conteúdo */}
-                <div className={`bg-white rounded-2xl p-5 flex-1 shadow-sm border
-                  ${e.status === 'current' ? 'border-green-400' : 'border-gray-100'}`}>
-                  <span className="text-xs text-green-600 font-semibold">{e.data}</span>
-                  <h3 className="font-bold text-gray-800 mt-0.5">{e.titulo}</h3>
-                  <p className="text-gray-500 text-sm mt-1">{e.desc}</p>
+                {/* Content Card */}
+                <div className="bg-spotify-surface rounded-lg p-6 hover:bg-spotify-card transition-all duration-300 border border-white/5 shadow-med group-hover:-translate-y-1">
+                  <div className="flex items-start justify-between mb-2">
+                    <span className="text-[11px] font-black tracking-widest text-spotify-green uppercase">{e.data}</span>
+                    <span className={`text-[9px] font-black px-2 py-0.5 rounded-sm uppercase tracking-widest
+                      ${e.status === 'done' ? 'bg-spotify-green/20 text-spotify-green' : 'bg-spotify-mid text-spotify-silver'}`}>
+                      {e.status === 'done' ? 'Concluído' : 'Próximo'}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-spotify-green transition-colors">{e.titulo}</h3>
+                  <p className="text-spotify-silver text-sm font-medium leading-relaxed">{e.desc}</p>
                 </div>
               </div>
             ))}
@@ -116,3 +52,4 @@ export default function Timeline() {
     </section>
   )
 }
+

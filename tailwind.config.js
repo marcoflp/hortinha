@@ -4,14 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        green: {
-          50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0',
-          300: '#86efac', 400: '#4ade80', 500: '#22c55e',
-          600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d',
+        spotify: {
+          green: '#1ed760',
+          black: '#121212',
+          surface: '#181818',
+          mid: '#1f1f1f',
+          card: '#252525',
+          silver: '#b3b3b3',
+          muted: '#7c7c7c',
+          negative: '#f3727f',
+          warning: '#ffa42b',
+          info: '#539df5',
         },
       },
-      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontFamily: {
+        sans: ['Inter', 'Helvetica Neue', 'helvetica', 'arial', 'sans-serif'],
+      },
+      borderRadius: {
+        pill: '500px',
+        circle: '50%',
+      },
+      boxShadow: {
+        heavy: 'rgba(0,0,0,0.5) 0px 8px 24px',
+        med: 'rgba(0,0,0,0.3) 0px 8px 8px',
+      },
+      letterSpacing: {
+        spotify: '1.4px',
+      },
     },
   },
   plugins: [],
 }
+
