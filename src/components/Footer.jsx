@@ -10,15 +10,11 @@ export default function Footer() {
             <Leaf className="text-spotify-green w-8 h-8" />
             Semeando <span className="text-spotify-green"> Saúde</span>
           </div>
-          <p className="text-spotify-silver text-[11px] font-black mb-4 uppercase tracking-[2px]">IFSul Passo Fundo · Campus Digital</p>
+          <p className="text-spotify-silver text-[11px] font-black mb-4 uppercase tracking-[2px]">IFSul Passo Fundo</p>
           <p className="text-spotify-muted text-sm font-bold leading-relaxed max-w-sm">
             Educação Pública, Gratuita e de Qualidade. <br />
             Projeto de Extensão em Agroecologia Urbana e Tecnologia Sustentável.
           </p>
-          <div className="flex gap-6 mt-8">
-            <Globe className="w-5 h-5 opacity-50 hover:opacity-100 hover:text-spotify-green transition-all cursor-pointer" />
-            <Heart className="w-5 h-5 opacity-50 hover:opacity-100 hover:text-spotify-green transition-all cursor-pointer" />
-          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 flex-[2]">
@@ -45,21 +41,34 @@ export default function Footer() {
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Institucional</h4>
             <ul className="space-y-4 text-sm font-bold">
-              <li className="hover:text-white cursor-pointer">Portal IFSul</li>
-              <li className="hover:text-white cursor-pointer">Editais Extensão</li>
-              <li className="hover:text-white cursor-pointer">Contato</li>
+              <li>
+                <a 
+                  href="http://passofundo.ifsul.edu.br/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-white cursor-pointer transition-colors"
+                >
+                  Portal IFSul
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="http://passofundo.ifsul.edu.br/fale-conosco" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-white cursor-pointer transition-colors"
+                >
+                  Contato
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex gap-6 text-[10px] font-black uppercase tracking-[2px] text-spotify-muted">
-          <span className="hover:text-white cursor-pointer transition-colors">Privacidade</span>
-          <span className="hover:text-white cursor-pointer transition-colors">Termos</span>
-        </div>
         <div className="text-[10px] font-black text-spotify-muted uppercase tracking-[2px] flex items-center gap-2">
-          © {new Date().getFullYear()} PROJETO SEMEANDO SAÚDE · FEITO COM <Heart className="w-3 h-3 text-spotify-green fill-spotify-green" /> PELOS ACADÊMICOS
+          © {new Date().getFullYear()} PROJETO SEMEANDO SAÚDE
         </div>
       </div>
     </footer>
