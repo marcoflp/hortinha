@@ -3,11 +3,11 @@ import { MessageSquareText, Smartphone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 // Importando as imagens reais da horta
-import imgAlface from '../img/1.jpg'
-import imgHortalicas from '../img/2.jpg'
-import imgTomate from '../img/3.jpg'
-import imgBeterraba from '../img/5.jpg'
-import imgManjericao from '../img/6.jpg'
+import imgAlface from '../img/alface.jpg'
+import imgHortalicas from '../img/rucula.jpg'
+import imgTomate from '../img/tomate.jpg'
+import imgBeterraba from '../img/beterraba.jpg'
+import imgManjericao from '../img/manjericao.jpg'
 import imgHortaVertical from '../img/8.jpg'
 
 const cultivos = [
