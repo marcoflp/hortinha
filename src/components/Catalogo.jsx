@@ -34,7 +34,6 @@ export default function Catalogo() {
           <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-widest text-[11px] mt-2">Cultivos reais capturados pela nossa equipe no IFSul.</p>
         </div>
 
-        {/* Filtros por categoria (Spotify style pills) */}
         <div className="flex flex-wrap gap-3 mb-12">
           {categorias.map(cat => (
             <button key={cat} onClick={() => setFiltro(cat)}
@@ -45,7 +44,6 @@ export default function Catalogo() {
           ))}
         </div>
 
-        {/* Grid de cards (Spotify playlist style) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtrados.map(c => (
             <div key={c.nome} className="bg-spotify-surface rounded-xl p-5 hover:bg-spotify-card transition-all duration-300 group cursor-default shadow-med flex flex-col h-full ring-1 ring-white/5 overflow-hidden">
@@ -70,9 +68,7 @@ export default function Catalogo() {
           ))}
         </div>
 
-        {/* Destaque do App (Spotify Card style) */}
         <div className="mt-20 bg-gradient-to-r from-spotify-surface to-spotify-mid rounded-2xl p-10 flex flex-col md:flex-row items-center gap-10 border border-white/10 shadow-heavy overflow-hidden relative">
-          {/* Abstract decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-spotify-green/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
           
           <div className="w-24 h-24 md:w-32 md:h-32 bg-spotify-black rounded-3xl flex items-center justify-center shadow-heavy shrink-0 border border-white/5 relative z-10">

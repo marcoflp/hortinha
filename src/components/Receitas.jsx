@@ -48,7 +48,6 @@ export default function Receitas() {
           <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-wider text-[11px] mt-2">Clique em uma receita para ver o modo de preparo completo.</p>
         </div>
 
-        {/* Grid de receitas (Spotify style) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {receitas.map(r => (
             <button key={r.nome} onClick={() => setSelecionada(r)}
@@ -71,7 +70,6 @@ export default function Receitas() {
         </div>
       </div>
 
-      {/* Modal Spotify Style */}
       {selecionada && (
         <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6 backdrop-blur-md animate-in zoom-in-95" onClick={() => setSelecionada(null)}>
           <div className="bg-spotify-surface rounded-xl max-w-xl w-full p-8 shadow-heavy border border-white/10" onClick={e => e.stopPropagation()}>
