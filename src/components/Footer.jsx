@@ -26,18 +26,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Navegação</h4>
-            <ul className="space-y-4 text-sm font-bold">
-              {['Sobre', 'Cultivos', 'Receitas', 'Dicas'].map(item => (
-                <li key={item}>
-                  <a href={`/#${item.toLowerCase()}`} className="hover:text-white transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[2px] text-white mb-6">Institucional</h4>
             <ul className="space-y-4 text-sm font-bold">

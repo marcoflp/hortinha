@@ -35,30 +35,6 @@ export default function Resultados() {
             </div>
           ))}
         </div>
-
-        {/* Próximo ciclo (Spotify style card) */}
-        <div className="bg-spotify-mid rounded-xl p-10 border border-white/10 shadow-heavy max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 justify-center mb-10">
-             <Calendar className="w-6 h-6 text-spotify-green" />
-             <h3 className="text-xl font-black text-white tracking-tighter uppercase">
-               Planejamento Segundo Ciclo (2026)
-             </h3>
-          </div>
-          <div className="space-y-6">
-            {proximosCiclo.map((item, i) => (
-              <div key={i} className="flex items-center gap-6 group">
-                <span className="bg-spotify-green text-black text-[10px] font-black px-4 py-2 rounded-sm shrink-0 min-w-[110px] text-center uppercase tracking-widest shadow-[0_0_15px_rgba(30,215,96,0.3)]">
-                  {item.periodo}
-                </span>
-                <div className="h-px bg-white/10 flex-grow group-hover:bg-spotify-green/30 transition-colors"></div>
-                <div className="flex items-center gap-3">
-                   <CheckCircle2 className="w-4 h-4 text-spotify-muted group-hover:text-spotify-green transition-colors" />
-                   <p className="text-white text-sm font-black tracking-tight uppercase opacity-80 group-hover:opacity-100">{item.acao}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

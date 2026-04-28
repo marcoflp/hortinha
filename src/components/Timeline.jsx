@@ -11,8 +11,8 @@ const etapas = [
 export default function Timeline() {
   return (
     <section id="timeline" className="py-24 bg-spotify-black px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-14">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
           <span className="section-label">02 / Nossa Jornada</span>
           <h2 className="section-title">Histórico do Projeto</h2>
           <p className="text-spotify-silver max-w-2xl font-medium">Do planejamento à colheita — tudo que foi feito e o que vem por aí.</p>
