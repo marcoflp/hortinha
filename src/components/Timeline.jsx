@@ -5,7 +5,7 @@ const etapas = [
   { data: 'Out 2025', titulo: 'Plantio e Oficinas', desc: 'Plantio de alfaces e início do desenvolvimento do app.', status: 'done' },
   { data: 'Nov 2025', titulo: 'Estruturas Finais', desc: 'Finalização dos suportes dos tomateiros.', status: 'done' },
   { data: 'Fev 2026', titulo: 'Segundo Ciclo', desc: 'Replanejamento e novas espécies.', status: 'done' },
-  { data: 'Jun 2026', titulo: 'Finalização do App', desc: 'Análise final e chatbot de IA concluído.', status: 'upcoming' },
+  { data: 'Jun 2026', titulo: 'Finalização do Site', desc: 'Análise final e chatbot de IA concluído.', status: 'upcoming' },
 ]
 
 export default function Timeline() {
@@ -13,7 +13,7 @@ export default function Timeline() {
     <section id="timeline" className="py-24 bg-spotify-black px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-14">
-          <span className="section-label">07 / Nossa Jornada</span>
+          <span className="section-label">02 / Nossa Jornada</span>
           <h2 className="section-title">Histórico do Projeto</h2>
           <p className="text-spotify-silver max-w-2xl font-medium">Do planejamento à colheita — tudo que foi feito e o que vem por aí.</p>
         </div>

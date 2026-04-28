@@ -29,7 +29,7 @@ export default function Catalogo() {
     <section id="catalogo" className="py-24 bg-spotify-black px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <span className="section-label">02 / Nosso Acervo</span>
+          <span className="section-label">03 / Nosso Acervo</span>
           <h2 className="section-title">O que cultivamos</h2>
           <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-widest text-[11px] mt-2">Cultivos reais capturados pela nossa equipe no IFSul.</p>
         </div>

@@ -43,7 +43,7 @@ export default function Receitas() {
     <section id="receitas" className="py-24 bg-spotify-black px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <span className="section-label">04 / Culinária Acadêmica</span>
+          <span className="section-label">06 / Culinária Acadêmica</span>
           <h2 className="section-title">Receitas com nossos cultivos</h2>
           <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-wider text-[11px] mt-2">Clique em uma receita para ver o modo de preparo completo.</p>
         </div>

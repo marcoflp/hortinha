@@ -24,7 +24,7 @@ export default function Galeria() {
     <section id="galeria" className="py-24 bg-spotify-black px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <span className="section-label">03 / Momentos</span>
+          <span className="section-label">04 / Momentos</span>
           <h2 className="section-title">Galeria de Fotos</h2>
           <p className="text-spotify-silver max-w-2xl font-medium">Registros reais das atividades do projeto Semeando Saúde.</p>
         </div>

@@ -13,7 +13,7 @@ export default function Dicas() {
     <section id="dicas" className="py-24 bg-spotify-black px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <span className="section-label">06 / Melhores Práticas</span>
+          <span className="section-label">07 / Melhores Práticas</span>
           <h2 className="section-title">Dicas de Cultivo</h2>
           <p className="text-spotify-silver max-w-2xl font-bold uppercase tracking-widest text-[11px] mt-2">Pequenos cuidados que fazem grande diferença na sua horta.</p>
         </div>
