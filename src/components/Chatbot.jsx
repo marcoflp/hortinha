@@ -48,7 +48,7 @@ export default function Chatbot() {
 
     if (!API_KEY) {
       setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: '⚠️ Erro: API Key não configurada. Por favor, adicione VITE_GEMINI_API_KEY ao seu arquivo .env.' }])
+        setMessages(prev => [...prev, { role: 'bot', content: '⚠️ Erro: API Key não configurada. Por favor, adicione VITE_GEMINI_API_KEY ao seu arquivo .env.', isError: true }])
         setLoading(false)
       }, 1000)
       return
@@ -71,11 +71,25 @@ export default function Chatbot() {
         history: chatHistory
       })
 
-      const result = await chat.sendMessage(textToSend)
-      const response = await result.response
-      const text = response.text()
+      const result = await chat.sendMessageStream(textToSend)
+      
+      setLoading(false)
+      setMessages(prev => [...prev, { role: 'bot', content: '' }])
 
-      setMessages(prev => [...prev, { role: 'bot', content: text }])
+      let fullText = ''
+      for await (const chunk of result.stream) {
+        fullText += chunk.text()
+        
+        setMessages(prev => {
+          const newMessages = [...prev]
+          newMessages[newMessages.length - 1] = { 
+            role: 'bot', 
+            content: fullText 
+          }
+          return newMessages
+        })
+      }
+
     } catch (error) {
       console.error('Chat Gemini Error:', error)
       setMessages(prev => [...prev, { 
@@ -83,7 +97,6 @@ export default function Chatbot() {
         content: 'Ops, tive um problema técnico. Pode repetir a pergunta?',
         isError: true 
       }])
-    } finally {
       setLoading(false)
     }
   }
@@ -94,7 +107,6 @@ export default function Chatbot() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-64px)] pt-20 bg-spotify-black text-white relative">
-      {/* Header do Chat */}
       <div className="max-w-4xl mx-auto w-full px-6 py-4 flex justify-between items-center bg-spotify-black/80 backdrop-blur-sm sticky top-0 z-20">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-spotify-green rounded-full flex items-center justify-center shadow-heavy border border-white/10">
@@ -113,7 +125,6 @@ export default function Chatbot() {
         </button>
       </div>
 
-      {/* Mensagens */}
       <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col items-center">
         <div className="max-w-3xl w-full space-y-8">
           {messages.map((m, i) => (
@@ -141,10 +152,8 @@ export default function Chatbot() {
         </div>
       </div>
 
-      {/* Input e Sugestões */}
       <div className="p-6 bg-gradient-to-t from-spotify-black via-spotify-black to-transparent">
         <div className="max-w-4xl mx-auto">
-          {/* Sugestões */}
           {!loading && messages.length < 2 && (
             <div className="flex flex-wrap gap-2 mb-6 justify-center">
               {SUGGESTIONS.map(s => (
@@ -178,5 +187,3 @@ export default function Chatbot() {
     </div>
   )
 }
-
-
