@@ -57,7 +57,7 @@ export default function Chatbot() {
 
     try {
       const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash-lite', 
+        model: 'gemini-3-flash-preview', 
         systemInstruction: SYSTEM_PROMPT
       })
 
