@@ -26,6 +26,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const chatEndRef = useRef(null)
+  const [streamingText, setStreamingText] = useState('')
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -48,7 +49,7 @@ export default function Chatbot() {
 
     if (!API_KEY) {
       setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: '⚠️ Erro: API Key não configurada. Por favor, adicione VITE_GEMINI_API_KEY ao seu arquivo .env.', isError: true }])
+        setMessages(prev => [...prev, { role: 'bot', content: '⚠️ Erro: API Key não configurada.', isError: true }])
         setLoading(false)
       }, 1000)
       return
@@ -56,7 +57,7 @@ export default function Chatbot() {
 
     try {
       const model = genAI.getGenerativeModel({
-        model: 'gemini-3.1-flash-lite-preview',
+        model: 'gemini-2.5-flash-lite', 
         systemInstruction: SYSTEM_PROMPT
       })
 
@@ -67,28 +68,22 @@ export default function Chatbot() {
           parts: [{ text: m.content }]
         }))
 
-      const chat = model.startChat({
-        history: chatHistory
-      })
+      const chat = model.startChat({ history: chatHistory })
 
       const result = await chat.sendMessageStream(textToSend)
       
-      setLoading(false)
-      setMessages(prev => [...prev, { role: 'bot', content: '' }])
-
+      setLoading(false) 
       let fullText = ''
       for await (const chunk of result.stream) {
-        fullText += chunk.text()
+        const chunkText = chunk.text()
+        console.log("Chegou pedaço:", chunkText)
         
-        setMessages(prev => {
-          const newMessages = [...prev]
-          newMessages[newMessages.length - 1] = { 
-            role: 'bot', 
-            content: fullText 
-          }
-          return newMessages
-        })
+        fullText += chunkText
+        setStreamingText(fullText) 
       }
+
+      setStreamingText('')
+      setMessages(prev => [...prev, { role: 'bot', content: fullText }])
 
     } catch (error) {
       console.error('Chat Gemini Error:', error)
@@ -98,6 +93,7 @@ export default function Chatbot() {
         isError: true 
       }])
       setLoading(false)
+      setStreamingText('')
     }
   }
 
