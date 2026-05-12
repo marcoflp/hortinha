@@ -3,13 +3,13 @@ import { Send, User, Bot, Loader2, Trash2, Sparkles } from 'lucide-react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import ReactMarkdown from 'react-markdown'
 
-// Initialize the API (user will provide the key in .env)
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
 const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null
 
 const SYSTEM_PROMPT = `
 Você é o assistente virtual do projeto "Semeando Saúde: Hortas Comunitárias para uma Alimentação Nutritiva" do IFSul Campus Passo Fundo.
 Seu objetivo é auxiliar estudantes e a comunidade em dúvidas sobre cultivo, agroecologia e nutrição.
+Seja amigável e responda a cumprimentos casuais (como "oi", "olá") de forma educada, oferecendo ajuda com a horta.
 Mantenha as respostas concisas e profissionais.
 `
 
@@ -36,7 +36,6 @@ export default function Chatbot() {
   }, [messages])
 
   const handleSend = async (suggestedText) => {
-    // Se vier texto da sugestão, usa ele. Se não, usa o estado do input.
     const textToSend = typeof suggestedText === 'string' ? suggestedText : input
 
     if (!textToSend.trim() || loading) return
@@ -62,7 +61,7 @@ export default function Chatbot() {
       })
 
       const chatHistory = messages
-        .filter((m, i) => i !== 0)
+        .filter((m, i) => i !== 0 && !m.isError)
         .map(m => ({
           role: m.role === 'bot' ? 'model' : 'user',
           parts: [{ text: m.content }]
@@ -72,7 +71,6 @@ export default function Chatbot() {
         history: chatHistory
       })
 
-      // Passamos a variável correta para o envio
       const result = await chat.sendMessage(textToSend)
       const response = await result.response
       const text = response.text()
@@ -80,7 +78,11 @@ export default function Chatbot() {
       setMessages(prev => [...prev, { role: 'bot', content: text }])
     } catch (error) {
       console.error('Chat Gemini Error:', error)
-      setMessages(prev => [...prev, { role: 'bot', content: 'Ops, tive um problema técnico. Pode repetir a pergunta?' }])
+      setMessages(prev => [...prev, { 
+        role: 'bot', 
+        content: 'Ops, tive um problema técnico. Pode repetir a pergunta?',
+        isError: true 
+      }])
     } finally {
       setLoading(false)
     }
