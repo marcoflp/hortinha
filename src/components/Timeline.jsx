@@ -4,8 +4,20 @@ const etapas = [
   { data: 'Set 2025', titulo: 'Início do Projeto', desc: 'Planejamento e confecção dos litrões.', status: 'done' },
   { data: 'Out 2025', titulo: 'Plantio e Oficinas', desc: 'Plantio de alfaces e início do desenvolvimento do app.', status: 'done' },
   { data: 'Nov 2025', titulo: 'Estruturas Finais', desc: 'Finalização dos suportes dos tomateiros.', status: 'done' },
-  { data: 'Fev 2026', titulo: 'Segundo Ciclo', desc: 'Replanejamento e novas espécies.', status: 'done' },
-  { data: 'Jun 2026', titulo: 'Finalização do Site', desc: 'Análise final e chatbot de IA concluído.', status: 'upcoming' },
+  { data: '10/Fev 2026', titulo: 'Conversa e Planejamento', desc: 'Reunião entre turmas de Práticas e preparação do cronograma.', status: 'done' },
+  { data: '24/Fev 2026', titulo: 'Remoção de Estruturas', desc: 'Remoção da estrutura de tomates para novo ciclo.', status: 'done' },
+  { data: '03/Mar 2026', titulo: 'Preparação dos Baldes', desc: 'Preparação dos baldes para cultivo de novas espécies.', status: 'done' },
+  { data: '10/Mar 2026', titulo: 'Plantio de Coqueiros e Hortaliças', desc: 'Plantio de coqueiros no lago e novas hortaliças.', status: 'done' },
+  { data: '17/Mar 2026', titulo: 'Manutenção da Horta', desc: 'Primeira manutenção completa da horta.', status: 'done' },
+  { data: '24/Mar 2026', titulo: 'Manutenção e Reestruturação', desc: 'Manutenção da horta e reestruturação do site.', status: 'done' },
+  { data: '31/Mar 2026', titulo: 'Desenvolvimento do Site', desc: 'Manutenção da horta e continuação do desenvolvimento do site.', status: 'done' },
+  { data: '07/Abr 2026', titulo: 'Evolução do Site', desc: 'Manutenção da horta e continuação do desenvolvimento do site.', status: 'done' },
+  { data: '14/Abr 2026', titulo: 'Novas Funcionalidades', desc: 'Manutenção da horta e desenvolvimento de novas funcionalidades.', status: 'done' },
+  { data: '28/Abr 2026', titulo: 'Expansão de Features', desc: 'Manutenção da horta e desenvolvimento de novas funcionalidades.', status: 'done' },
+  { data: '05/Mai 2026', titulo: 'Primeira Colheita', desc: 'Colheita das hortaliças e preparação do Coffee Break.', status: 'done' },
+  { data: '12/Mai 2026', titulo: 'Segunda Colheita', desc: 'Nova colheita das hortaliças e preparação do Coffee Break.', status: 'done' },
+  { data: 'Jun 2026', titulo: 'Finalização do Site', desc: 'Análise final e conclusão do chatbot de IA.', status: 'upcoming' },
+  { data: 'Jul 2026', titulo: 'Apresentação Final', desc: 'Exposição e avaliação final do projeto.', status: 'upcoming' },
 ]
 
 export default function Timeline() {

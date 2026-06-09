@@ -2,16 +2,17 @@ import React from 'react'
 import { Microscope, Users, Smartphone, Calendar, CheckCircle2 } from 'lucide-react'
 
 const resultados = [
-  { icon: Microscope, titulo: 'Horta Implantada', desc: 'Espaço de aprendizagem prática no campus com horta vertical e canteiros otimizados.' },
-  { icon: Users, titulo: 'Oficinas Ativas', desc: 'Capacitação sobre sustentabilidade e agroecologia para toda a comunidade acadêmica.' },
-  { icon: Smartphone, titulo: 'Inovação Digital', desc: 'Desenvolvimento de assistente inteligente para suporte ao cultivo sustentável.' },
+  { icon: Microscope, titulo: 'Horta Acadêmica', desc: 'Implantação de uma horta acadêmica como espaço de aprendizagem prática no campus com cultivo de hortaliças orgânicas.' },
+  { icon: Smartphone, titulo: 'Site com Chatbot de IA', desc: 'Disponibilização de um protótipo de site com chatbot de inteligência artificial para consultas sobre cultivo.' },
+  { icon: Users, titulo: 'Comunidade Integrada', desc: 'Capacitação da comunidade acadêmica sobre sustentabilidade, cultivo orgânico e alimentação saudável.' },
 ]
 
 const proximosCiclo = [
-  { periodo: 'Fev/2026', acao: 'Replanejamento e novas espécies' },
-  { periodo: 'Mar/2026', acao: 'Preparação e replantio' },
-  { periodo: 'Abr–Mai/26', acao: 'Manutenção contínua' },
-  { periodo: 'Jun/2026', acao: 'Finalização do aplicativo' },
+  { periodo: 'Fev/2026', acao: 'Replanejamento e Preparação do Segundo Ciclo - Seleção de novas espécies e aquisição de insumos' },
+  { periodo: 'Mar/2026', acao: 'Execução do Replantio - Preparação do terreno e plantio de novas espécies' },
+  { periodo: 'Abr–Mai/26', acao: 'Acompanhamento e Manutenção - Manutenção contínua da horta' },
+  { periodo: 'Jun/2026', acao: 'Consolidação dos Resultados - Análise final e finalização do site' },
+  { periodo: 'Jul/2026', acao: 'Exposição - Apresentação final e avaliação do projeto' },
 ]
 
 export default function Resultados() {
@@ -21,6 +22,9 @@ export default function Resultados() {
         <div className="mb-12">
           <span className="section-label">05 / Impacto</span>
           <h2 className="section-title">Resultados Alcançados</h2>
+          <p className="text-spotify-silver max-w-3xl font-medium">
+            Principais conquistas do projeto até o momento.
+          </p>
         </div>
 
         {/* Cards de resultados */}
