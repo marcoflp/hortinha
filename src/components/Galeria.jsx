@@ -15,6 +15,10 @@ import funcionalidades from '../img/funcionalidades.jpg'
 import colheita1 from '../img/colheita1.jpg'
 import colheita2 from '../img/colheita2.jpg'
 import coffeebreak from '../img/coffeebreak.jpg'
+import remocao from '../img/remocao.jpg'
+import desenvolvimento from '../img/desenvolvimento.png'
+import desenvolvimento2 from '../img/desenvolviment_o.png'
+import desenvolvimento3 from '../img/desenvolvimen_to.png'
 
 const fotos = [
   { src: foto1, legenda: 'Confecção dos litrões', data: '23/Set/2025' },
@@ -31,8 +35,12 @@ const fotos = [
   { src: foto12, legenda: 'Desenvolvimento do site', data: '24/Mar/2026' },
   { src: funcionalidades, legenda: 'Novas funcionalidades', data: '14/Abr/2026' },
   { src: colheita1, legenda: 'Primeira colheita', data: '05/Mai/2026' },
+  { src: coffeebreak, legenda: 'Coffee Break', data: '05/Mai/2026' },
   { src: colheita2, legenda: 'Segunda colheita', data: '12/Mai/2026' },
-  { src: coffeebreak, legenda: 'Coffee Break', data: '12/Mai/2026' },
+  { src: desenvolvimento, legenda: 'Desenvolvimento do site', data: '19/Mai/2026' },
+  { src: desenvolvimento2, legenda: 'Desenvolvimento do site', data: '26/Mai/2026' },
+  { src: desenvolvimento3, legenda: 'Desenvolvimento do site', data: '02/Jun/2026'},
+  { src: remocao, legenda: 'Remoção das estruturas', data: '09/Jun/2026' }
 ]
 
 export default function Galeria() {
@@ -47,7 +55,7 @@ export default function Galeria() {
           <p className="text-spotify-silver max-w-2xl font-medium">Registros das atividades realizadas durante o projeto Semeando Saúde em 2025 e 2026.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {fotos.map((foto, i) => (
             <button key={i} onClick={() => setAmpliada(foto)}
               className="group relative rounded-lg overflow-hidden bg-spotify-surface aspect-square flex items-center justify-center border border-white/5 hover:bg-spotify-card transition-all duration-300 shadow-med">

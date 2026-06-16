@@ -15,15 +15,12 @@ export default function Sobre() {
         <div className="mb-12 max-w-7xl mx-auto">
           <span className="section-label">01 / Sobre o Projeto</span>
           <h2 className="section-title">O que é o Semeando Saúde?</h2>
-          <p className="text-spotify-silver mt-4 text-base font-medium leading-relaxed">
+          {/* <p className="text-spotify-silver mt-4 text-base font-medium leading-relaxed">
             Desenvolvido por estudantes voluntários do <span className="text-white font-bold">IFSul Campus Passo Fundo</span>, 
             o projeto capacita a comunidade acadêmica para planejar, implantar e manter uma horta sustentável, 
             promovendo <span className="text-spotify-green">alimentação saudável</span> e <span className="text-spotify-green">educação ambiental</span>.
-          </p>
-          <p className="text-spotify-silver mt-3 text-base font-medium leading-relaxed">
-            <span className="text-white font-bold">Equipe executora:</span> Frederico Parise Taufer, Marco Antônio Dias Felipi, 
-            Murilo Bertella Ossanes e Victor do Amarante dos Santos.
-          </p>
+          </p> */}
+          
         </div>
 
         {/* Cards dos pilares */}

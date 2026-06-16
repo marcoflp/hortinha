@@ -15,8 +15,8 @@ const cultivos = [
   { nome: 'Hortaliças', categoria: 'Folhosas', imagem: imgHortalicas, status: 'Colhida', desc: 'Plantio inicial realizado em 30/Set com variedades diversas.' },
   { nome: 'Tomate Grape', categoria: 'Frutas', imagem: imgTomate, status: 'Colhida', desc: 'Plantado em 21/Out em baldes. Suporte finalizado em 11/Nov.' },
   { nome: 'Manjericão', categoria: 'Temperos', imagem: imgManjericao, status: 'Colhida', desc: 'Cultivado para uso em receitas. Aromático e versátil.' },
-  { nome: 'Beterraba', categoria: 'Raízes', imagem: imgBeterraba, status: 'Crescendo', desc: 'Plantada neste semestre. Rica em ferro e antioxidantes.' },
-  { nome: 'Horta Vertical', categoria: 'Estrutura', imagem: imgHortaVertical, status: 'Ativa', desc: 'Estrutura criada com garrafas PET reutilizadas (Litrões).' },
+  { nome: 'Beterraba', categoria: 'Raízes', imagem: imgBeterraba, status: 'Colhida', desc: 'Plantada neste semestre. Rica em ferro e antioxidantes.' },
+  { nome: 'Horta Vertical', categoria: 'Estrutura', imagem: imgHortaVertical, status: 'Colhida', desc: 'Estrutura criada com garrafas PET reutilizadas (Litrões).' },
 ]
 
 const categorias = ['Todos', 'Folhosas', 'Frutas', 'Raízes', 'Temperos', 'Estrutura']
