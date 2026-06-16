@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import foto1 from '../img/1.jpg'
 import foto2 from '../img/2.jpg'
 import foto3 from '../img/3.jpg'
@@ -44,7 +44,33 @@ const fotos = [
 ]
 
 export default function Galeria() {
-  const [ampliada, setAmpliada] = useState(null)
+  const [indiceAmpliada, setIndiceAmpliada] = useState(null)
+
+  const irProxima = () => {
+    setIndiceAmpliada((prev) => (prev + 1) % fotos.length)
+  }
+
+  const irAnterior = () => {
+    setIndiceAmpliada((prev) => (prev - 1 + fotos.length) % fotos.length)
+  }
+
+  // Controle via teclado
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (indiceAmpliada === null) return
+      
+      if (e.key === 'ArrowRight') {
+        irProxima()
+      } else if (e.key === 'ArrowLeft') {
+        irAnterior()
+      } else if (e.key === 'Escape') {
+        setIndiceAmpliada(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [indiceAmpliada])
 
   return (
     <section id="galeria" className="py-24 bg-spotify-black px-6">
@@ -57,7 +83,7 @@ export default function Galeria() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {fotos.map((foto, i) => (
-            <button key={i} onClick={() => setAmpliada(foto)}
+            <button key={i} onClick={() => setIndiceAmpliada(i)}
               className="group relative rounded-lg overflow-hidden bg-spotify-surface aspect-square flex items-center justify-center border border-white/5 hover:bg-spotify-card transition-all duration-300 shadow-med">
 
               <img src={foto.src} alt={foto.legenda}
@@ -74,18 +100,35 @@ export default function Galeria() {
       </div>
 
       {/* Modal Spotify Style */}
-      {ampliada && (
-        <div className="fixed inset-0 bg-black/95 z-[100] flex flex-col items-center justify-center p-8 backdrop-blur-sm animate-in fade-in" onClick={() => setAmpliada(null)}>
+      {indiceAmpliada !== null && (
+        <div className="fixed inset-0 bg-black/95 z-[100] flex flex-col items-center justify-center p-8 backdrop-blur-sm animate-in fade-in" onClick={() => setIndiceAmpliada(null)}>
           <button className="absolute top-8 right-8 text-white text-4xl hover:text-spotify-green transition-colors">✕</button>
           
           <div className="max-w-4xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
             <div className="relative group w-full bg-spotify-surface rounded-2xl overflow-hidden shadow-heavy">
-               <img src={ampliada.src} alt={ampliada.legenda} className="w-full max-h-[70vh] object-contain" />
+               <img src={fotos[indiceAmpliada].src} alt={fotos[indiceAmpliada].legenda} className="w-full max-h-[70vh] object-contain" />
+               
+               {/* Botões de navegação */}
+               <button 
+                 onClick={irAnterior}
+                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
+                 ‹
+               </button>
+               <button 
+                 onClick={irProxima}
+                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
+                 ›
+               </button>
+
+               {/* Indicador de posição */}
+               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full text-spotify-green font-bold text-sm">
+                 {indiceAmpliada + 1} de {fotos.length}
+               </div>
             </div>
             
             <div className="mt-8 text-center">
-              <h3 className="text-3xl font-black text-white tracking-tighter mb-2">{ampliada.legenda}</h3>
-              <p className="text-spotify-green font-black uppercase tracking-[2px] text-sm">{ampliada.data} · IFSul Passo Fundo</p>
+              <h3 className="text-3xl font-black text-white tracking-tighter mb-2">{fotos[indiceAmpliada].legenda}</h3>
+              <p className="text-spotify-green font-black uppercase tracking-[2px] text-sm">{fotos[indiceAmpliada].data} · IFSul Passo Fundo</p>
             </div>
           </div>
         </div>
