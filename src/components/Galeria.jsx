@@ -24,8 +24,8 @@ const fotos = [
   { src: foto1, legenda: 'Confecção dos litrões', data: '23/Set/2025' },
   { src: foto2, legenda: 'Plantio inicial', data: '30/Set/2025' },
   { src: foto3, legenda: 'Oficina comunitária', data: '07/Out/2025' },
-  { src: foto5, legenda: 'Semana Acadêmica', data: '14/Out/2025' },
-  { src: foto6, legenda: 'Plantio dos tomates', data: '21/Out/2025' },
+  { src: foto5, legenda: 'Preparação e plantio dos tomates', data: '14/Out/2025' },
+  { src: foto6, legenda: 'Suporte dos tomates', data: '21/Out/2025' },
   { src: foto7, legenda: 'Suporte dos tomates', data: '11/Nov/2025' },
   { src: foto8, legenda: 'Coleta de resultados', data: '18/Nov/2025' },
   { src: foto150, legenda: 'Preparação dos baldes', data: '03/Mar/2026' },
@@ -39,7 +39,7 @@ const fotos = [
   { src: colheita2, legenda: 'Segunda colheita', data: '12/Mai/2026' },
   { src: desenvolvimento, legenda: 'Desenvolvimento do site', data: '19/Mai/2026' },
   { src: desenvolvimento2, legenda: 'Desenvolvimento do site', data: '26/Mai/2026' },
-  { src: desenvolvimento3, legenda: 'Desenvolvimento do site', data: '02/Jun/2026'},
+  { src: desenvolvimento3, legenda: 'Desenvolvimento do site', data: '02/Jun/2026' },
   { src: remocao, legenda: 'Remoção das estruturas', data: '09/Jun/2026' }
 ]
 
@@ -58,7 +58,7 @@ export default function Galeria() {
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (indiceAmpliada === null) return
-      
+
       if (e.key === 'ArrowRight') {
         irProxima()
       } else if (e.key === 'ArrowLeft') {
@@ -103,29 +103,29 @@ export default function Galeria() {
       {indiceAmpliada !== null && (
         <div className="fixed inset-0 bg-black/95 z-[100] flex flex-col items-center justify-center p-8 backdrop-blur-sm animate-in fade-in" onClick={() => setIndiceAmpliada(null)}>
           <button className="absolute top-8 right-8 text-white text-4xl hover:text-spotify-green transition-colors">✕</button>
-          
+
           <div className="max-w-4xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
             <div className="relative group w-full bg-spotify-surface rounded-2xl overflow-hidden shadow-heavy">
-               <img src={fotos[indiceAmpliada].src} alt={fotos[indiceAmpliada].legenda} className="w-full max-h-[70vh] object-contain" />
-               
-               {/* Botões de navegação */}
-               <button 
-                 onClick={irAnterior}
-                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
-                 ‹
-               </button>
-               <button 
-                 onClick={irProxima}
-                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
-                 ›
-               </button>
+              <img src={fotos[indiceAmpliada].src} alt={fotos[indiceAmpliada].legenda} className="w-full max-h-[70vh] object-contain" />
 
-               {/* Indicador de posição */}
-               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full text-spotify-green font-bold text-sm">
-                 {indiceAmpliada + 1} de {fotos.length}
-               </div>
+              {/* Botões de navegação */}
+              <button
+                onClick={irAnterior}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
+                ‹
+              </button>
+              <button
+                onClick={irProxima}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-spotify-green/90 hover:bg-spotify-green text-black p-3 rounded-full text-2xl font-bold transition-all duration-200 hover:scale-110">
+                ›
+              </button>
+
+              {/* Indicador de posição */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full text-spotify-green font-bold text-sm">
+                {indiceAmpliada + 1} de {fotos.length}
+              </div>
             </div>
-            
+
             <div className="mt-8 text-center">
               <h3 className="text-3xl font-black text-white tracking-tighter mb-2">{fotos[indiceAmpliada].legenda}</h3>
               <p className="text-spotify-green font-black uppercase tracking-[2px] text-sm">{fotos[indiceAmpliada].data} · IFSul Passo Fundo</p>
